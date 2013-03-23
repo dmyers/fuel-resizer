@@ -5,10 +5,12 @@ namespace Resizer;
 class Image_Resizer
 {
 	protected $image;
+	protected $filename;
 	
 	public function __construct($filename)
 	{
 		$this->image = \Image::load($filename);
+		$this->filename = $filename;
 	}
 	
 	public static function forge($filename)
@@ -88,8 +90,12 @@ class Image_Resizer
 		return $this->image->resize($width, $height, false);
 	}
 	
-	public function save($filename)
+	public function save($filename = null)
 	{
+		if (empty($filename)) {
+			$filename = $this->filename;
+		}
+		
 		return $this->image->save($filename);
 	}
 }
