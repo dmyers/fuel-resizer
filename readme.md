@@ -25,7 +25,9 @@ Alternatively you can download it and extract it into `fuel/packages/resizer/`.
 ## Usage
 
 ```php
-Image_Resizer::resize('path/to/file.jpg', '48', '48');
+$image = Image_Resizer::forge('path/to/file.jpg');
+$imgae->resize('48', '48');
+$image->save();
 ```
 
 ## Updates
